@@ -12,9 +12,9 @@ on:
             default: false
             type: boolean
         
-    env:
-        WORKFLOW_VAR : "This is a workflow-level variable"
-        OVERWRITTEN : "Default workflow value"
+env:
+    WORKFLOW_VAR : "This is a workflow-level variable"
+    OVERWRITTEN : "Default workflow value"
 
 jobs:
     debug-check:
