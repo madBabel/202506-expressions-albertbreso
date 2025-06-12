@@ -19,13 +19,16 @@ env:
 jobs:
     debug-check:
         runs-on: ubuntu-latest
+        env:
+            JOB_VAR: 'This is a job-level variable'
+            OVERWRITTEN: 'Overwritten at job level'
         steps:
            - name: "[Debug] Print Debug Info"
-             if: ${{ github.event.inputs.debug }}
+             if: ${{ inputs.debug  == true }}
              run: echo "Debug mode is ${{ github.event.inputs.debug }}"
 
            - name: "[Debug] Triggered from Main"
-             if: ${{ equals(github.event.inputs.debug, true) && github.ref == 'refs/heads/main" }}
+             if: ${{ inputs.debug ==  true && github.ref == 'refs/heads/main" }}
              run: echo "Triggered from Main branch"
 
            - name: "[Debug] PrintVariables"
